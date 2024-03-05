@@ -11,6 +11,8 @@ namespace server.Controllers
     [ApiController]
     public class VideoController : ControllerBase
     {
+        #region Constructor & Depdendency Injection
+
         // Access to the DB
 
         private readonly ApplicationDbContext _context;
@@ -19,6 +21,12 @@ namespace server.Controllers
         {
             _context = context;
         }
+
+        #endregion
+
+
+        #region HttpPost CreateNewVideo
+
 
 
         [HttpPost]
@@ -36,6 +44,15 @@ namespace server.Controllers
             return Ok(newVideo);
         }
 
+        #endregion
+
+        #region HttpGet GetAllVideos
+
+
+
+        
+
+
         [HttpGet]
         public async Task<ActionResult<List<Video>>> GetAllVideos()
         {
@@ -44,6 +61,10 @@ namespace server.Controllers
             return Ok(videos);
         }
 
+        #endregion
+
+
+        #region HttpGet GetiVideoById
         [HttpGet]
         [Route("{videoId}")]
 
@@ -59,7 +80,13 @@ namespace server.Controllers
             return Ok(video);
                 
         }
+        #endregion
 
+
+
+        #region HttpUpdateVideo UpdateVideo
+
+       
 
         [HttpPatch]
         [Route("{videoId}")]
@@ -80,6 +107,12 @@ namespace server.Controllers
             return Ok("Video updated successfully");
           }
 
+        #endregion
+
+        #region HttpDelete DeleteVideo
+
+       
+
         [HttpDelete]
         [Route("{videoId}")]
 
@@ -99,6 +132,7 @@ namespace server.Controllers
             return Ok("Video deleted successfully");
         }
 
+        #endregion
 
         // Unique url generator
 
