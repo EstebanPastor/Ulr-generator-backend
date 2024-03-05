@@ -44,5 +44,31 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "server.Controllers.VideoController",
+    "Method": "GetVideoById",
+    "RelativePath": "api/Video/{videoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "videoId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "server.Entities.Video",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

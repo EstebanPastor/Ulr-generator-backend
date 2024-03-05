@@ -44,6 +44,22 @@ namespace server.Controllers
             return Ok(videos);
         }
 
+        [HttpGet]
+        [Route("{videoId}")]
+
+        public async Task<ActionResult<Video>> GetVideoById([FromRoute] long videoId)
+        {
+            var video = await _context.Videos.FirstOrDefaultAsync(q => q.Id == videoId);
+
+            if (video is null)
+            {
+                return NotFound("Video not found");
+            }
+
+            return Ok(video);
+                
+        }
+
         // Unique url generator
 
         private string CreateUniqueUrl()
