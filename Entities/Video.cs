@@ -1,7 +1,10 @@
-﻿namespace server.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace server.Entities
 {
     public class Video
     {
+        [Key]
         public long Id { get; set; }
 
         public string Url { get; set; }
