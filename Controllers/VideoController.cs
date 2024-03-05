@@ -80,6 +80,25 @@ namespace server.Controllers
             return Ok("Video updated successfully");
           }
 
+        [HttpDelete]
+        [Route("{videoId}")]
+
+        public async Task<IActionResult> DeleteVideo([FromRoute] long videoId)
+        {
+            var video = await _context.Videos.FirstOrDefaultAsync(q => q.Id == videoId);
+
+            if (video is null)
+            {
+                return NotFound("Video not found");
+            }
+
+            _context.Videos.Remove(video);
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Video deleted successfully");
+        }
+
 
         // Unique url generator
 
