@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using server.Context;
 using server.Dtos;
 using server.Entities;
@@ -35,6 +36,14 @@ namespace server.Controllers
             return Ok(newVideo);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<Video>>> GetAllVideos()
+        {
+            var videos = await _context.Videos.ToListAsync();
+
+            return Ok(videos);
+        }
+
         // Unique url generator
 
         private string CreateUniqueUrl()
@@ -53,7 +62,9 @@ namespace server.Controllers
                 {
                     var randomNum = rand.Next(1, 9);
                     var randomChar = (char)rand.Next('a', 'z');
+                    var randomCharWithUppercase = (char)rand.Next('A', 'Z');
                     newRandomUrl += randomChar.ToString();
+                    newRandomUrl += randomCharWithUppercase.ToString();
                     newRandomUrl += randomNum.ToString();
                 }
 
