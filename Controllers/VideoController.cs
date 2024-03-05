@@ -60,6 +60,27 @@ namespace server.Controllers
                 
         }
 
+
+        [HttpPatch]
+        [Route("{videoId}")]
+
+        public async Task<IActionResult> UpdateVideo([FromRoute] long videoId, [FromBody] CreateVideoDto dto)
+        {
+            var video = await _context.Videos.FirstOrDefaultAsync(q => q.Id == videoId);
+
+            if (video is null)
+            {
+                return NotFound("Video not found");
+            }
+                
+            video.Title = dto.Title;
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Video updated successfully");
+          }
+
+
         // Unique url generator
 
         private string CreateUniqueUrl()

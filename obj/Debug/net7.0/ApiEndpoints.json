@@ -70,5 +70,26 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "server.Controllers.VideoController",
+    "Method": "UpdateVideo",
+    "RelativePath": "api/Video/{videoId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "videoId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "server.Dtos.CreateVideoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
