@@ -47,22 +47,16 @@ namespace server.Controllers
         #endregion
 
         #region HttpGet GetAllVideos
-
-
-
         
-
-
         [HttpGet]
         public async Task<ActionResult<List<Video>>> GetAllVideos()
         {
-            var videos = await _context.Videos.ToListAsync();
+            var videos = await _context.Videos.OrderByDescending(q => q.CreatedAt).ToArrayAsync();
 
             return Ok(videos);
         }
 
         #endregion
-
 
         #region HttpGet GetiVideoById
         [HttpGet]
@@ -81,8 +75,6 @@ namespace server.Controllers
                 
         }
         #endregion
-
-
 
         #region HttpUpdateVideo UpdateVideo
 
